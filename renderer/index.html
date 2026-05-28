@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="stage">
+    <div id="dragon" class="hidden">
+      <div id="bubble" class="bubble-hidden">완료! ✨</div>
+      <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
+        <!-- Tail -->
+        <path d="M108,188 Q138,212 152,228 Q145,233 139,225 Q125,212 103,193" fill="#6A4C9C"/>
+
+        <!-- Body -->
+        <ellipse cx="105" cy="175" rx="43" ry="37" fill="#9B7FD4"/>
+
+        <!-- Left wing -->
+        <g id="wing-left">
+          <path d="M78,162 Q42,128 28,143 Q38,165 73,172" fill="#C4A8F0" opacity="0.9"/>
+          <path d="M78,162 Q50,148 42,155 Q52,165 75,168" fill="#B89FE8" opacity="0.6"/>
+        </g>
+
+        <!-- Right wing -->
+        <g id="wing-right">
+          <path d="M132,162 Q168,128 182,143 Q172,165 137,172" fill="#C4A8F0" opacity="0.9"/>
+          <path d="M132,162 Q160,148 168,155 Q158,165 135,168" fill="#B89FE8" opacity="0.6"/>
+        </g>
+
+        <!-- Belly -->
+        <ellipse cx="105" cy="178" rx="28" ry="24" fill="#C4A8F0" opacity="0.6"/>
+
+        <!-- Neck -->
+        <ellipse cx="105" cy="135" rx="23" ry="20" fill="#9B7FD4"/>
+
+        <!-- Head -->
+        <circle cx="105" cy="86" r="53" fill="#9B7FD4"/>
+
+        <!-- Head shading -->
+        <ellipse cx="105" cy="95" rx="38" ry="32" fill="#A88FDC" opacity="0.3"/>
+
+        <!-- Left horn -->
+        <path d="M80,42 L72,12 L90,38" fill="#6A4C9C"/>
+        <path d="M80,42 L76,22 L84,38" fill="#8B6BC4" opacity="0.5"/>
+        <!-- Right horn -->
+        <path d="M130,42 L138,12 L120,38" fill="#6A4C9C"/>
+        <path d="M130,42 L134,22 L126,38" fill="#8B6BC4" opacity="0.5"/>
+
+        <!-- Head spikes -->
+        <polygon points="100,35 97,20 103,20" fill="#6A4C9C"/>
+        <polygon points="112,34 109,18 115,18" fill="#6A4C9C"/>
+
+        <!-- Ears/frills -->
+        <path d="M58,72 Q45,58 52,48 Q62,55 65,70" fill="#7B5EA7"/>
+        <path d="M152,72 Q165,58 158,48 Q148,55 145,70" fill="#7B5EA7"/>
+
+        <!-- Eye whites -->
+        <ellipse cx="88" cy="82" rx="17" ry="16" fill="white"/>
+        <ellipse cx="122" cy="82" rx="17" ry="16" fill="white"/>
+
+        <!-- Irises -->
+        <circle cx="90" cy="84" r="10" fill="#3D2070"/>
+        <circle cx="124" cy="84" r="10" fill="#3D2070"/>
+
+        <!-- Pupils (vertical slit - dragon style) -->
+        <ellipse cx="91" cy="85" rx="4" ry="7" fill="#0D0020"/>
+        <ellipse cx="125" cy="85" rx="4" ry="7" fill="#0D0020"/>
+
+        <!-- Eye shine -->
+        <circle cx="95" cy="80" r="3.5" fill="white"/>
+        <circle cx="129" cy="80" r="3.5" fill="white"/>
+        <circle cx="88" cy="88" r="1.8" fill="white" opacity="0.6"/>
+        <circle cx="122" cy="88" r="1.8" fill="white" opacity="0.6"/>
+
+        <!-- Cheek blush -->
+        <ellipse cx="73" cy="97" rx="11" ry="8" fill="#FF9FC8" opacity="0.35"/>
+        <ellipse cx="137" cy="97" rx="11" ry="8" fill="#FF9FC8" opacity="0.35"/>
+
+        <!-- Nostrils -->
+        <ellipse cx="99" cy="106" rx="4" ry="3" fill="#7B5EA7"/>
+        <ellipse cx="111" cy="106" rx="4" ry="3" fill="#7B5EA7"/>
+
+        <!-- Smile -->
+        <path d="M93,116 Q105,125 117,116" fill="none" stroke="#6A4C9C" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Tiny fangs -->
+        <path d="M100,118 L98,124 L102,118" fill="white"/>
+        <path d="M110,118 L108,124 L112,118" fill="white"/>
+
+        <!-- Fire breath (hidden by default, shown on animation) -->
+        <g id="fire">
+          <ellipse cx="105" cy="133" rx="9" ry="7" fill="#FF6B00" opacity="0"/>
+          <ellipse cx="98" cy="146" rx="8" ry="6" fill="#FF4500" opacity="0"/>
+          <ellipse cx="113" cy="147" rx="7" ry="6" fill="#FF6B00" opacity="0"/>
+          <ellipse cx="105" cy="157" rx="10" ry="8" fill="#FFB800" opacity="0"/>
+          <ellipse cx="96" cy="165" rx="6" ry="5" fill="#FF4500" opacity="0"/>
+          <ellipse cx="115" cy="163" rx="7" ry="6" fill="#FF6B00" opacity="0"/>
+          <ellipse cx="105" cy="172" rx="8" ry="6" fill="#FFD700" opacity="0"/>
+          <ellipse cx="105" cy="157" rx="14" ry="10" fill="#FF8C00" opacity="0"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

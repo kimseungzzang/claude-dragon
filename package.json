@@ -1,0 +1,12 @@
+{
+  "name": "claude-dragon",
+  "version": "1.0.0",
+  "description": "Desktop dragon companion for Claude Code",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^28.0.0"
+  }
+}

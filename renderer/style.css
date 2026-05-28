@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: transparent;
+  overflow: hidden;
+  width: 300px;
+  height: 260px;
+}
+
+#stage {
+  width: 300px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#dragon {
+  position: relative;
+  width: 200px;
+}
+
+#dragon svg {
+  width: 200px;
+  height: 230px;
+  display: block;
+}
+
+/* Wing flap */
+#wing-left {
+  transform-box: fill-box;
+  transform-origin: right center;
+  animation: flap-left 0.45s ease-in-out infinite alternate;
+}
+
+#wing-right {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: flap-right 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes flap-left {
+  from { transform: rotate(-8deg) scaleY(0.9); }
+  to   { transform: rotate(18deg) scaleY(1.05); }
+}
+
+@keyframes flap-right {
+  from { transform: rotate(8deg) scaleY(0.9); }
+  to   { transform: rotate(-18deg) scaleY(1.05); }
+}
+
+/* Dragon states */
+.hidden {
+  transform: translateX(360px);
+  opacity: 0;
+}
+
+@keyframes fly-in {
+  from { transform: translateX(360px) rotate(15deg); opacity: 0; }
+  60%  { transform: translateX(-15px) rotate(-3deg); opacity: 1; }
+  to   { transform: translateX(0) rotate(0deg); opacity: 1; }
+}
+
+@keyframes hover {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-12px) rotate(1.5deg); }
+}
+
+@keyframes fly-out {
+  from { transform: translateX(0) rotate(0deg); opacity: 1; }
+  to   { transform: translateX(360px) rotate(-10deg); opacity: 0; }
+}
+
+/* Speech bubble */
+#bubble {
+  position: absolute;
+  top: 0px;
+  right: -5px;
+  background: white;
+  border-radius: 14px;
+  padding: 7px 14px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4A3080;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 18px;
+  border: 9px solid transparent;
+  border-top-color: white;
+  border-bottom: 0;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.06));
+}
+
+.bubble-hidden {
+  opacity: 0;
+  transform: scale(0.7) translateY(6px);
+}
+
+@keyframes bubble-pop {
+  from { opacity: 0; transform: scale(0.7) translateY(6px); }
+  70%  { transform: scale(1.08) translateY(-1px); opacity: 1; }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes bubble-fade {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.85) translateY(-4px); }
+}
+
+/* Fire */
+@keyframes fire-flicker {
+  0%   { opacity: 0.75; transform: scale(0.95) translateY(0px); }
+  33%  { opacity: 1;    transform: scale(1.08) translateY(-1px); }
+  66%  { opacity: 0.85; transform: scale(0.98) translateY(1px); }
+  100% { opacity: 0.9;  transform: scale(1.03) translateY(-0.5px); }
+}
