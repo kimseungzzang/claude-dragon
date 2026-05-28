@@ -44,7 +44,7 @@ To register manually, add this to `~/.claude/settings.json`:
         "hooks": [
           {
             "type": "command",
-            "command": "curl -s -X POST -H 'Content-Type: application/json' -d @- http://127.0.0.1:3939/notify > /dev/null 2>&1 || true"
+            "command": "cat > /tmp/claude-dragon-trigger"
           }
         ]
       }

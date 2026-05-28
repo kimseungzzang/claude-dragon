@@ -1,6 +1,8 @@
 const { app, BrowserWindow, screen } = require('electron')
-const http = require('http')
+const fs = require('fs')
 const path = require('path')
+
+const TRIGGER_FILE = '/tmp/claude-dragon-trigger'
 
 let win
 
@@ -10,8 +12,8 @@ function createWindow() {
   win = new BrowserWindow({
     width: 300,
     height: 260,
-    x: width - 310,
-    y: height - 270,
+    x: Math.floor((width - 300) / 2),
+    y: Math.floor((height - 260) / 2),
     transparent: true,
     frame: false,
     alwaysOnTop: true,
@@ -29,33 +31,29 @@ function createWindow() {
   win.setIgnoreMouseEvents(true, { forward: true })
 }
 
-function startServer() {
-  const server = http.createServer((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    if (req.url === '/notify') {
-      let body = ''
-      req.on('data', chunk => { body += chunk })
-      req.on('end', () => {
-        let cwd = ''
-        try {
-          const data = JSON.parse(body)
-          cwd = path.basename(data.cwd || '')
-        } catch (_) {}
-        win?.webContents.send('dragon-appear', cwd)
-        res.writeHead(200)
-        res.end('ok')
-      })
-    } else {
-      res.writeHead(404)
-      res.end()
-    }
+function watchTrigger() {
+  let lastContent = ''
+
+  const tryRead = () => {
+    try {
+      const content = fs.readFileSync(TRIGGER_FILE, 'utf8').trim()
+      if (!content || content === lastContent) return
+      lastContent = content
+      const data = JSON.parse(content)
+      const cwd = path.basename(data.cwd || '')
+      const contextPct = data.context_pct ?? null
+      win?.webContents.send('dragon-appear', cwd, contextPct)
+    } catch (_) {}
+  }
+
+  fs.watch(path.dirname(TRIGGER_FILE), (eventType, filename) => {
+    if (filename === path.basename(TRIGGER_FILE)) tryRead()
   })
-  server.listen(3939, '127.0.0.1')
 }
 
 app.whenReady().then(() => {
   createWindow()
-  startServer()
+  watchTrigger()
 })
 
 app.on('window-all-closed', () => {

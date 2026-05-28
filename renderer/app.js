@@ -1,21 +1,16 @@
 const dragon = document.getElementById('dragon')
 const fireEls = document.querySelectorAll('#fire ellipse')
 const bubble = document.getElementById('bubble')
-
-const phrases = [
-  '완료! ✨',
-  '다 했어요~ 🔥',
-  '뿌우웅! 🐲',
-  '훌륭해요! 💜',
-  '완성! ⚡',
-  '냠냠~ ✅',
-  '뿅! 🌟',
-]
+const bubbleProject = document.getElementById('bubble-project')
+const bubbleCtx = document.getElementById('bubble-ctx')
 
 let animating = false
 
-function randomPhrase() {
-  return phrases[Math.floor(Math.random() * phrases.length)]
+function ctxColor(pct) {
+  if (pct >= 90) return '#FF4444'
+  if (pct >= 75) return '#FF8C00'
+  if (pct >= 50) return '#FFB800'
+  return '#52C41A'
 }
 
 function showFire() {
@@ -33,11 +28,18 @@ function hideFire() {
   })
 }
 
-function appear(cwd) {
+function appear(cwd, contextPct) {
   if (animating) return
   animating = true
 
-  bubble.textContent = cwd ? `📁 ${cwd}` : randomPhrase()
+  bubbleProject.textContent = cwd ? `📁 ${cwd}` : '완료! ✨'
+  if (contextPct !== null && contextPct !== undefined) {
+    bubbleCtx.textContent = `🧠 컨텍스트 ${contextPct}%`
+    bubbleCtx.style.color = ctxColor(contextPct)
+    bubbleCtx.style.display = 'block'
+  } else {
+    bubbleCtx.style.display = 'none'
+  }
   bubble.style.animation = 'none'
   bubble.style.opacity = '0'
   hideFire()

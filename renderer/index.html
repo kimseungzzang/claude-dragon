@@ -7,7 +7,10 @@
 <body>
   <div id="stage">
     <div id="dragon" class="hidden">
-      <div id="bubble" class="bubble-hidden">완료! ✨</div>
+      <div id="bubble" class="bubble-hidden">
+        <div id="bubble-project">완료!</div>
+        <div id="bubble-ctx"></div>
+      </div>
       <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
         <!-- Tail -->
         <path d="M108,188 Q138,212 152,228 Q145,233 139,225 Q125,212 103,193" fill="#6A4C9C"/>
@@ -62,7 +65,7 @@
         <circle cx="90" cy="84" r="10" fill="#3D2070"/>
         <circle cx="124" cy="84" r="10" fill="#3D2070"/>
 
-        <!-- Pupils (vertical slit - dragon style) -->
+        <!-- Pupils (vertical slit) -->
         <ellipse cx="91" cy="85" rx="4" ry="7" fill="#0D0020"/>
         <ellipse cx="125" cy="85" rx="4" ry="7" fill="#0D0020"/>
 
@@ -86,13 +89,13 @@
         <path d="M100,118 L98,124 L102,118" fill="white"/>
         <path d="M110,118 L108,124 L112,118" fill="white"/>
 
-        <!-- Fire breath (hidden by default, shown on animation) -->
+        <!-- Fire breath -->
         <g id="fire">
           <ellipse cx="105" cy="133" rx="9" ry="7" fill="#FF6B00" opacity="0"/>
-          <ellipse cx="98" cy="146" rx="8" ry="6" fill="#FF4500" opacity="0"/>
+          <ellipse cx="98"  cy="146" rx="8" ry="6" fill="#FF4500" opacity="0"/>
           <ellipse cx="113" cy="147" rx="7" ry="6" fill="#FF6B00" opacity="0"/>
           <ellipse cx="105" cy="157" rx="10" ry="8" fill="#FFB800" opacity="0"/>
-          <ellipse cx="96" cy="165" rx="6" ry="5" fill="#FF4500" opacity="0"/>
+          <ellipse cx="96"  cy="165" rx="6" ry="5" fill="#FF4500" opacity="0"/>
           <ellipse cx="115" cy="163" rx="7" ry="6" fill="#FF6B00" opacity="0"/>
           <ellipse cx="105" cy="172" rx="8" ry="6" fill="#FFD700" opacity="0"/>
           <ellipse cx="105" cy="157" rx="14" ry="10" fill="#FF8C00" opacity="0"/>
